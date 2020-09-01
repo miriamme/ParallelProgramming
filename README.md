@@ -1,2 +1,9 @@
-# ParallelProgramming
-C# Parallel Programming Sample
+# Private Study Note
+
+## Javascript
+
+- Modern javascript practice
+
+## Python
+
+- BAEKJOON Online 문제풀이
