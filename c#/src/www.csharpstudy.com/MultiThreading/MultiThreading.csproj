@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="AsynchronousDelegateSample.cs" />
     <Compile Include="BackgroundWorkerSample.cs" />
+    <Compile Include="DataParallelismSample1.cs" />
+    <Compile Include="DataParallelismSample2.cs" />
+    <Compile Include="DataParallelismSample3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskGenericSample1.cs" />

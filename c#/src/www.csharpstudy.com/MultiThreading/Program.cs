@@ -1,4 +1,4 @@
-﻿#define TaskGenericSample2
+﻿#define DataParallelismSample3
 
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,12 @@ namespace MultiThreading
             sample2.Main();
             Thread.Sleep(5000);
             sample2.Cancel();
-
+#elif (DataParallelismSample1)
+            new DataParallelismSample1().Main();
+#elif (DataParallelismSample2)
+            new DataParallelismSample2().Main();
+#elif (DataParallelismSample3)
+            new DataParallelismSample3().Main();
 #endif
         }
     }
