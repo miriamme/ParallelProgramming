@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {margin: 10px 10px; padding-top:10px; font-size:0.8em; border-top:1px solid #eee;}
+        div label {display: inline-block; width:100px;vertical-align: top;}
+    </style>
+</head>
+<body>
+    <h2>Validation Test</h2>
+
+    <form id="testForm" action="next.html" method="POST">
+        <div>
+            <label for="tinput">Input : </label>
+            <input type="text" name="tinput0" id="tinput0" verify="noempty|regex:[0-9a-zA-Z]{5,}|max:10">
+        </div>
+        <div>
+            <label for="tinput">Input : </label>
+            <input type="text" name="tinput1" id="tinput1" verify="noempty|min:4">
+        </div>
+        <div>
+            <label for="tinput">Input : </label>
+            <input type="text" name="tinput2" id="tinput2" verify="noempty">
+        </div>
+        <div>
+            <label for="tcheck">Checkbox : </label>
+            <input type="checkbox" name="tcheck" id="tcheck" verify="check:true">
+        </div>
+        <div>
+            <label for="tselect">Select : </label>
+            <select name="tselect" id="tselect" verify="nozeroindex">
+                <option value="">---select---</option>
+                <option value="1">item1</option>
+                <option value="2">item2</option>
+            </select>
+        </div>
+        <div>
+            <label for="ttextarea">TestArea : </label>
+            <textarea name="ttextarea" id="ttextarea" cols="30" rows="5" verify="noempty"></textarea>
+        </div>
+        
+    </form>
+    <div>
+        <button class="submit" type="submit">Submit</button>
+    </div>
+    
+    <!-- form 유효성검사 모듈 -->
+    <script src="formValidation.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            //검증모듈 로딩
+            //parameter1 : form id
+            //parameter2 : 검증타입을 입력하는 attribute name (기본값 "verify")
+            formValidation.load("testForm","verify");
+
+            //검증타입 설명
+            //noempty : 공백허용불가
+            //number : 숫자만허용
+            //nozeroindex : 0초과되는 정수만 가능(selectbox에서 사용)
+            //check : true or false, ex)check:true
+            //min : 최소길이만 허용, ex)min:4
+            //max : 최대길이만 허용, ex)max:10
+            //regex : 정규실통과시에만 허용, ex)regex:[0-9a-zA-Z]{5,}
+            //
+            //중복조건 처리가능 : ex)noempty|number|min:4 //공백허용이 안되고, 숫자만 4자리 이상만 가능
+
+            document.querySelector("button.submit").addEventListener("click", function(){
+                formValidation.verify(result => {                   
+                    /*
+                    result object
+                    [properties]
+                    passedElements : [] //통과한 element 들의 집합
+                    failedElements : [] //검증에 통과하지 못한 element 들의 집합
+                    messages : [] //검증에 통과하지 못한 메시지 집합(failedElements의 순서에 매칭된다.)
+                    isPassed : true | false // true(통과) false(검증실패)
+                    
+                    [추가설명]
+                    검증에 통과되면 isPassed === ture 만 체크하면 되고, 실패할 경우에는
+                    나머지 property를 이용해서 표현해 주면 된다.
+                    주로 form 안의 commit 버튼이나 링크로 처리할 것이므로 버블 이벤트를 막기위한 아래 코드를 이용한다.
+                    
+                    if (!result.isPassed) {
+                        event.preventDefault();
+                    }
+                    */
+                    for (let i = 0; i < result.passedElements.length; i++) {
+                        result.passedElements[i].style = "border:1px solid blue";
+                    }
+                    for (let i = 0; i < result.failedElements.length; i++) {
+                        result.failedElements[i].style = "border:1px solid red";
+                    }
+
+                    if (!result.isPassed) {
+                        event.preventDefault();
+                    }
+                        
+                });
+            });
+        });
+    </script>
+</body>
+</html>
