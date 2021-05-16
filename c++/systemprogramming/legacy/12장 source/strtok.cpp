@@ -1,6 +1,6 @@
 /*
     strtok.cpp
-    ÇÁ·Î±×·¥ ¼³¸í: ¹®ÀÚ¿­À» ÅäÅ«À¸·Î ³ª´©´Â ¿¹Á¦.
+    í”„ë¡œê·¸ë¨ ì„¤ëª…: ë¬¸ìì—´ì„ í† í°ìœ¼ë¡œ ë‚˜ëˆ„ëŠ” ì˜ˆì œ.
 */
 #include <stdio.h>
 #include <windows.h>
@@ -10,14 +10,14 @@ int _tmain(int argc, TCHAR* argv[])
 {
 	TCHAR string[] = 
 		_T("Hey, get a life!")
-		_T("You don't even have two pennies to rub together.");  // ºĞ¸®ÇÒ ¹®ÀÚ¿­.
+		_T("You don't even have two pennies to rub together.");  // ë¶„ë¦¬í•  ë¬¸ìì—´.
 
-	TCHAR seps[]   = _T(" ,.!");       // °ø¹é ',' '\n'À» ºĞ¸®ÀÇ ´ë»óÀ¸·Î ¼±ÅÃ.
+	TCHAR seps[]   = _T(" ,.!");       // ê³µë°± ',' '\n'ì„ ë¶„ë¦¬ì˜ ëŒ€ìƒìœ¼ë¡œ ì„ íƒ.
 
-    // ÅäÅ« ºĞ¸® Á¶°Ç, ¹®ÀÚ¿­ ¼³Á¤ ¹× Ã¹ ¹øÂ° ÅäÅ« ¹İÈ¯.
+    // í† í° ë¶„ë¦¬ ì¡°ê±´, ë¬¸ìì—´ ì„¤ì • ë° ì²« ë²ˆì§¸ í† í° ë°˜í™˜.
 	TCHAR * token = _tcstok( string, seps );
 	
-	// °è¼ÓÇØ¼­ ÅäÅ«À» ¹İÈ¯ ¹× Ãâ·Â.
+	// ê³„ì†í•´ì„œ í† í°ì„ ë°˜í™˜ ë° ì¶œë ¥.
 	while( token != NULL )
 	{
 		_tprintf( _T(" %s\n"), token );

@@ -1,64 +1,63 @@
 /*
 	CountThread.cpp
-	ÇÁ·Î±×·¥ ¼³¸í: »ı¼º °¡´ÉÇÑ ¾²·¹µåÀÇ °³¼ö ÃøÁ¤.
+	í”„ë¡œê·¸ë¨ ì„¤ëª…: ìƒì„± ê°€ëŠ¥í•œ ì“°ë ˆë“œì˜ ê°œìˆ˜ ì¸¡ì •.
 */
 
 #include <stdio.h>
 #include <windows.h>
 #include <tchar.h>
 
-#define MAX_THREADS (1024*10)
+#define MAX_THREADS (1024 * 10)
 
-DWORD WINAPI ThreadProc( LPVOID lpParam ) 
-{ 
-	DWORD threadNum = (DWORD) lpParam;
+DWORD WINAPI ThreadProc(LPVOID lpParam)
+{
+	DWORD threadNum = (DWORD)lpParam;
 
-	while(1)
+	while (1)
 	{
 		_tprintf(_T("thread num: %d \n"), threadNum);
 		Sleep(5000);
 	}
 
-    return 0; 
-} 
-
-DWORD cntOfThread = 0;
-
-int _tmain(int argc, TCHAR* argv[])
-{
-    DWORD dwThreadId[MAX_THREADS];
-    HANDLE hThread[MAX_THREADS];
-
-    // »ı¼º °¡´ÉÇÑ ÃÖ´ë °³¼öÀÇ ¾²·¹µå »ı¼º
-
-    while(1)
-    {
-
-        hThread[cntOfThread] = 
-			CreateThread ( 
-				NULL,					   // µğÆúÆ® º¸¾È °ü¸®ÀÚ.
-				0,				           // µğÆúÆ® ½ºÅÃ »çÀÌÁî.
-				ThreadProc,				   // ¾²·¹µå main ÇÔ¼ö(¾²·¹µå ÇÔ¼ö) ¼³Á¤.
-				(LPVOID)cntOfThread,       // ¾²·¹µå ÇÔ¼öÀÇ Àü´ŞÀÎÀÚ.
-				0,						   // µğÆúÆ® ¾²·¹µå »ı¼º ¼Ó¼º.
-				&dwThreadId[cntOfThread]   // ¾²·¹µå ID ÀúÀåÀ» À§ÇÑ ÁÖ¼Ò°ª Àü´Ş.
-		    );			                
- 
-        // ¾²·¹µå »ı¼º È®ÀÎ
-        if (hThread[cntOfThread] == NULL) 
-        {
-			_tprintf(_T("MAXIMUM THREAD SIZE: %d \n"), cntOfThread);
-			break;
-        }
-
-		cntOfThread++;
-    }
-
-    for(DWORD i=0; i<cntOfThread; i++)
-    {
-        CloseHandle(hThread[i]);
-    }
-
 	return 0;
 }
 
+DWORD cntOfThread = 0;
+
+int _tmain(int argc, TCHAR *argv[])
+{
+	DWORD dwThreadId[MAX_THREADS];
+	HANDLE hThread[MAX_THREADS];
+
+	// ìƒì„± ê°€ëŠ¥í•œ ìµœëŒ€ ê°œìˆ˜ì˜ ì“°ë ˆë“œ ìƒì„±
+
+	while (1)
+	{
+
+		hThread[cntOfThread] =
+			CreateThread(
+				NULL,					 // ë””í´íŠ¸ ë³´ì•ˆ ê´€ë¦¬ì.
+				0,						 // ë””í´íŠ¸ ìŠ¤íƒ ì‚¬ì´ì¦ˆ.
+				ThreadProc,				 // ì“°ë ˆë“œ main í•¨ìˆ˜(ì“°ë ˆë“œ í•¨ìˆ˜) ì„¤ì •.
+				(LPVOID)cntOfThread,	 // ì“°ë ˆë“œ í•¨ìˆ˜ì˜ ì „ë‹¬ì¸ì.
+				0,						 // ë””í´íŠ¸ ì“°ë ˆë“œ ìƒì„± ì†ì„±.
+				&dwThreadId[cntOfThread] // ì“°ë ˆë“œ ID ì €ì¥ì„ ìœ„í•œ ì£¼ì†Œê°’ ì „ë‹¬.
+			);
+
+		// ì“°ë ˆë“œ ìƒì„± í™•ì¸
+		if (hThread[cntOfThread] == NULL)
+		{
+			_tprintf(_T("MAXIMUM THREAD SIZE: %d \n"), cntOfThread);
+			break;
+		}
+
+		cntOfThread++;
+	}
+
+	for (DWORD i = 0; i < cntOfThread; i++)
+	{
+		CloseHandle(hThread[i]);
+	}
+
+	return 0;
+}

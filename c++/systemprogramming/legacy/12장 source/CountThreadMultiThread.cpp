@@ -1,6 +1,6 @@
 /*
 	CountThreadMultiThread.cpp
-	ÇÁ·Î±×·¥ ¼³¸í: _beginthreadex ÇÔ¼ö ±â¹İÀ¸·Î º¯°æ.
+	í”„ë¡œê·¸ë¨ ì„¤ëª…: _beginthreadex í•¨ìˆ˜ ê¸°ë°˜ìœ¼ë¡œ ë³€ê²½.
 */
 
 #include <stdio.h>
@@ -30,22 +30,22 @@ int _tmain(int argc, TCHAR* argv[])
     DWORD dwThreadId[MAX_THREADS];
     HANDLE hThread[MAX_THREADS];
 
-    // »ı¼º °¡´ÉÇÑ ÃÖ´ë °³¼öÀÇ ¾²·¹µå »ı¼º
+    // ìƒì„± ê°€ëŠ¥í•œ ìµœëŒ€ ê°œìˆ˜ì˜ ì“°ë ˆë“œ ìƒì„±
 
     while(1)
     {
 
         hThread[cntOfThread] = (HANDLE)
 			_beginthreadex ( 
-				NULL,					   // µğÆúÆ® º¸¾È °ü¸®ÀÚ.
-				0,				           // µğÆúÆ® ½ºÅÃ »çÀÌÁî.
-				ThreadProc,				   // ¾²·¹µå main ÇÔ¼ö(¾²·¹µå ÇÔ¼ö) ¼³Á¤.
-				(LPVOID)cntOfThread,       // ¾²·¹µå ÇÔ¼öÀÇ Àü´ŞÀÎÀÚ.
-				0,						   // µğÆúÆ® ¾²·¹µå »ı¼º ¼Ó¼º.
-				(unsigned *)&dwThreadId[cntOfThread]   // ¾²·¹µå ID ÀúÀåÀ» À§ÇÑ ÁÖ¼Ò°ª Àü´Ş.
+				NULL,					   // ë””í´íŠ¸ ë³´ì•ˆ ê´€ë¦¬ì.
+				0,				           // ë””í´íŠ¸ ìŠ¤íƒ ì‚¬ì´ì¦ˆ.
+				ThreadProc,				   // ì“°ë ˆë“œ main í•¨ìˆ˜(ì“°ë ˆë“œ í•¨ìˆ˜) ì„¤ì •.
+				(LPVOID)cntOfThread,       // ì“°ë ˆë“œ í•¨ìˆ˜ì˜ ì „ë‹¬ì¸ì.
+				0,						   // ë””í´íŠ¸ ì“°ë ˆë“œ ìƒì„± ì†ì„±.
+				(unsigned *)&dwThreadId[cntOfThread]   // ì“°ë ˆë“œ ID ì €ì¥ì„ ìœ„í•œ ì£¼ì†Œê°’ ì „ë‹¬.
 		    );			                
  
-        // ¾²·¹µå »ı¼º È®ÀÎ
+        // ì“°ë ˆë“œ ìƒì„± í™•ì¸
         if (hThread[cntOfThread] == NULL) 
         {
 			_tprintf(_T("MAXIMUM THREAD SIZE: %d \n"), cntOfThread);

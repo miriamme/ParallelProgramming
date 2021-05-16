@@ -1,6 +1,6 @@
 /*
 	ThreadAdderTwo.cpp
-	ÇÁ·Î±×·¥ ¼³¸í: Àü¿ªº¯¼ö¸¦ ÀÌ¿ëÇÑ ¾²·¹µå ±â¹İ Adder.
+	í”„ë¡œê·¸ë¨ ì„¤ëª…: ì „ì—­ë³€ìˆ˜ë¥¼ ì´ìš©í•œ ì“°ë ˆë“œ ê¸°ë°˜ Adder.
 */
 
 #include <stdio.h>
@@ -21,7 +21,7 @@ DWORD WINAPI ThreadProc( LPVOID lpParam )
 		total += i;
 	}
 
-    return 0; // Á¤»óÀû Á¾·á.
+    return 0; // ì •ìƒì  ì¢…ë£Œ.
 }
 
 

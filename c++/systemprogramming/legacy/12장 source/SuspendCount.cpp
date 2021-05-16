@@ -1,6 +1,6 @@
 /*
 	SuspendCount.cpp
-	ÇÁ·Î±×·¥ ¼³¸í: ¾²·¹µåÀÇ »óÅÂ º¯°æ.
+	í”„ë¡œê·¸ë¨ ì„¤ëª…: ì“°ë ˆë“œì˜ ìƒíƒœ ë³€ê²½.
 */
 
 #include <stdio.h>
@@ -25,7 +25,7 @@ int _tmain(int argc, TCHAR* argv[])
 {
     DWORD dwThreadId;
     HANDLE hThread;
-	DWORD susCnt; // suspend count¸¦ È®ÀÎÇÏ±â À§ÇÑ º¯¼ö.
+	DWORD susCnt; // suspend countë¥¼ í™•ì¸í•˜ê¸° ìœ„í•œ ë³€ìˆ˜.
 
     hThread = (HANDLE)
 		_beginthreadex ( 
@@ -37,7 +37,7 @@ int _tmain(int argc, TCHAR* argv[])
 			(unsigned *)&dwThreadId   
 	    );			                
 
-    // ¾²·¹µå »ı¼º È®ÀÎ
+    // ì“°ë ˆë“œ ìƒì„± í™•ì¸
     if (hThread == NULL) 
 		_tprintf(_T("Thread creation fault! \n") );
 
