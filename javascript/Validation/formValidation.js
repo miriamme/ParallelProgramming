@@ -1,4 +1,4 @@
-'use stric'
+'use strict'
 
 let formValidation = (function(){
     let validation = {
